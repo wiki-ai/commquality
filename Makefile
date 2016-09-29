@@ -1,16 +1,7 @@
 
 
 
-datasets/detox_labels.mturk.dev_train.w_cache.json.bz2: \
-		datasets/detox_labels.mturk.dev.json.bz2 \
-		datasets/detox_labels.mturk.train.json.bz2
-	bzcat \
-		datasets/detox_labels.mturk.dev.json.bz2 \
-		datasets/detox_labels.mturk.train.json.bz2 | \
-	revscoring extract --host https://en.wikipedia.org \
-		editquality.feature_lists.enwiki.goodfaith \
-		--verbose | bzip2 -c > \
-	datasets/detox_labels.mturk.dev_train.w_cache.json.bz2
+##### Models #################################################################
 
 models/enwiki.attack.gradient_boosting.model: \
 		datasets/detox_labels.mturk.dev_train.w_cache.json.bz2
@@ -47,6 +38,17 @@ models/enwiki.aggression.gradient_boosting.model: \
 	models/enwiki.attack.gradient_boosting.model
 
 
+###### Feature sets ###########################################################
+datasets/detox_labels.mturk.dev_train.w_cache.json.bz2: \
+		datasets/detox_labels.mturk.dev.json.bz2 \
+		datasets/detox_labels.mturk.train.json.bz2
+	bzcat \
+		datasets/detox_labels.mturk.dev.json.bz2 \
+		datasets/detox_labels.mturk.train.json.bz2 | \
+	revscoring extract --host https://en.wikipedia.org \
+		editquality.feature_lists.enwiki.goodfaith \
+		--verbose | bzip2 -c > \
+	datasets/detox_labels.mturk.dev_train.w_cache.json.bz2
 
 ###### Datasets ###############################################################
 
