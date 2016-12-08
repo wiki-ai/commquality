@@ -1,6 +1,3 @@
-
-
-
 ##### Models #################################################################
 
 models/enwiki.attack.gradient_boosting.model: \
@@ -8,7 +5,7 @@ models/enwiki.attack.gradient_boosting.model: \
 	bzcat datasets/detox_labels.mturk.dev_train.w_cache.json.bz2 | \
 	revscoring cv_test \
 		revscoring.scorer_models.GradientBoosting \
-		editquality.feature_lists.enwiki.goodfaith \
+		commquality.feature_lists.enwiki.attack \
 		attack \
 		--version=0.0.1 \
 		-p 'max_depth=7' \
@@ -25,7 +22,7 @@ models/enwiki.aggression.gradient_boosting.model: \
 	bzcat datasets/detox_labels.mturk.dev_train.w_cache.json.bz2 | \
 	revscoring cv_test \
 		revscoring.scorer_models.GradientBoosting \
-		editquality.feature_lists.enwiki.goodfaith \
+		commquality.feature_lists.enwiki.aggression \
 		aggression \
 		--version=0.0.1 \
 		-p 'max_depth=7' \
@@ -35,7 +32,7 @@ models/enwiki.aggression.gradient_boosting.model: \
 		$(test_statistics) \
 		--balance-sample-weight \
 		--center --scale > \
-	models/enwiki.attack.gradient_boosting.model
+	models/enwiki.aggression.gradient_boosting.model
 
 
 ###### Feature sets ###########################################################
@@ -46,7 +43,8 @@ datasets/detox_labels.mturk.dev_train.w_cache.json.bz2: \
 		datasets/detox_labels.mturk.dev.json.bz2 \
 		datasets/detox_labels.mturk.train.json.bz2 | \
 	revscoring extract --host https://en.wikipedia.org \
-		editquality.feature_lists.enwiki.goodfaith \
+		commquality.feature_lists.enwiki.attack \
+		commquality.feature_lists.enwiki.aggression \
 		--verbose | bzip2 -c > \
 	datasets/detox_labels.mturk.dev_train.w_cache.json.bz2
 
