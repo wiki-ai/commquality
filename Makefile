@@ -60,23 +60,23 @@ label_datasets: \
 	datasets/detox_labels.mturk.train.json.bz2 \
 	datasets/detox_labels.mturk.test.json.bz2 \
 
-datasets/detox_annotations.mturk.dev.json.bz2: \
-		datasets/dirty_tsv/detox_annotations.mturk.dev.dirty_tsv.bz2
-	bzcat datasets/dirty_tsv/detox_annotations.mturk.dev.dirty_tsv.bz2 | \
-	python clean_detox_tsv.py | \
-	bzip2 -c > datasets/detox_annotations.mturk.dev.json.bz2
+#datasets/detox_annotations.mturk.dev.json.bz2: \
+#		datasets/dirty_tsv/detox_annotations.mturk.dev.dirty_tsv.bz2
+#	bzcat datasets/dirty_tsv/detox_annotations.mturk.dev.dirty_tsv.bz2 | \
+#	python clean_detox_tsv.py | \
+#	bzip2 -c > datasets/detox_annotations.mturk.dev.json.bz2
 
-datasets/detox_annotations.mturk.train.json.bz2: \
-		datasets/dirty_tsv/detox_annotations.mturk.train.dirty_tsv.bz2
-	bzcat datasets/dirty_tsv/detox_annotations.mturk.train.dirty_tsv.bz2 | \
-	python clean_detox_tsv.py | \
-	bzip2 -c > datasets/detox_annotations.mturk.train.json.bz2
+#datasets/detox_annotations.mturk.train.json.bz2: \
+#		datasets/dirty_tsv/detox_annotations.mturk.train.dirty_tsv.bz2
+#	bzcat datasets/dirty_tsv/detox_annotations.mturk.train.dirty_tsv.bz2 | \
+#	python clean_detox_tsv.py | \
+#	bzip2 -c > datasets/detox_annotations.mturk.train.json.bz2
 
-datasets/detox_annotations.mturk.test.json.bz2: \
-		datasets/dirty_tsv/detox_annotations.mturk.test.dirty_tsv.bz2
-	bzcat datasets/dirty_tsv/detox_annotations.mturk.test.dirty_tsv.bz2 | \
-	python clean_detox_tsv.py | \
-	bzip2 -c > datasets/detox_annotations.mturk.test.json.bz2
+#datasets/detox_annotations.mturk.test.json.bz2: \
+#		datasets/dirty_tsv/detox_annotations.mturk.test.dirty_tsv.bz2
+#	bzcat datasets/dirty_tsv/detox_annotations.mturk.test.dirty_tsv.bz2 | \
+#	python clean_detox_tsv.py | \
+#	bzip2 -c > datasets/detox_annotations.mturk.test.json.bz2
 
 datasets/detox_labels.mturk.dev.json.bz2: \
 		datasets/detox_annotations.mturk.dev.json.bz2
