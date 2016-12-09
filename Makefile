@@ -1,3 +1,11 @@
+test_statistics = \
+                -s 'table' -s 'accuracy' -s 'precision' -s 'recall' \
+                -s 'pr' -s 'roc' \
+                -s 'recall_at_fpr(max_fpr=0.10)' \
+                -s 'filter_rate_at_recall(min_recall=0.90)' \
+                -s 'filter_rate_at_recall(min_recall=0.75)'
+
+
 ##### Models #################################################################
 
 models/enwiki.attack.gradient_boosting.model: \
